@@ -14,13 +14,11 @@ const getBookById = async (req, res) => {
     const bookid = parseInt(req.params.id);
     const book = await Book.findOne({ id: bookid });
     if (!book) {
-      res
-        .status(404)
-        .json({ message: "Book with id " + req.params.id + " was not found" });
+      throw new Error(`Book with id: ${bookid} was not found`);
     }
     res.status(200).json(book);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(404).json({ message: error.message });
   }
 };
 
