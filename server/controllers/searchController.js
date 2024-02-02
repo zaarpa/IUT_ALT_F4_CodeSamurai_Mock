@@ -40,7 +40,9 @@ const searchBook = async (req, res) => {
 
       res.status(200).json({ books });
     } else {
-      fetchController.getAllBooks;
+      const books = await Book.find();
+
+      res.status(200).json(books);
     }
   } catch (error) {
     console.error(error);
