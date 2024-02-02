@@ -1,9 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-// const {
-
-// } = require("../controllers/");
+const { searchBook } = require("../controllers/searchController");
 
 router.post("/books", function (req, res) {
   res.send("Create a book");
@@ -21,8 +19,6 @@ router.get("/books", function (req, res) {
   res.send("get all books");
 });
 
-router.get("/books", function (req, res) {
-  res.send("search  books");
-});
+router.get("/api/books", searchBook);
 
 module.exports = router;
