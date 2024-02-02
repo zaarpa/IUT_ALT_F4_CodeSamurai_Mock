@@ -18,7 +18,7 @@ const bookSchema = new mongoose.Schema({
     required: true,
   },
   price: {
-    type: float,
+    type: Number,
     required: true,
   },
 });

@@ -1,25 +1,16 @@
 const express = require("express");
 const router = express.Router();
+const addBookController = require("../controllers/addBook.controller");
+const updateBookController = require("../controllers/updateBook.controller");
+const fetchController = require("../controllers/bookFetch.controller");
 
-// const {
+router.post("/api/books", addBookController.addBook);
 
-// } = require("../controllers/");
+router.put("/api/books/:id", updateBookController.updateBook);
 
-router.post("/books", function (req, res) {
-  res.send("Create a book");
-});
+router.get("/api/books/:id", fetchController.getBookById);
 
-router.put("/books/:id", function (req, res) {
-  res.send("Update a book");
-});
-
-router.get("/books/:id", function (req, res) {
-  res.send("get a book");
-});
-
-router.get("/books", function (req, res) {
-  res.send("get all books");
-});
+router.get("/api/books", fetchController.getAllBooks);
 
 router.get("/books", function (req, res) {
   res.send("search  books");
