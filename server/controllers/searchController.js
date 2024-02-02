@@ -42,7 +42,7 @@ const searchBook = async (req, res) => {
     } else {
       const books = await Book.find();
 
-      res.status(200).json(books);
+      res.status(200).json({ books });
     }
   } catch (error) {
     console.error(error);
