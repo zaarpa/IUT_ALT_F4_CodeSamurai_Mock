@@ -19,7 +19,7 @@ const searchBook = async (req, res) => {
         query.id = id;
       }
       if (price) {
-        query;
+        query.price = price;
       }
 
       if (author) {

@@ -1,4 +1,5 @@
 require("dotenv").config();
 const app = require("./app.js");
 
-app.listen(process.env.PORT);
+const server = app.listen(process.env.PORT);
+module.exports = server;
