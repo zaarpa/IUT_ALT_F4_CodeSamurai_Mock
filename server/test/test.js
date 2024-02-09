@@ -17,8 +17,6 @@ describe("Book fetch Tests", () => {
   }, 25000);
 
   test("should return an error", async () => {
-    await request(app).get("/api/books/1");
-
     const response = await request(app).get("/api/books/101");
     expect(response.statusCode).toBe(404);
     expect(response.body.message).toBe(`Book with id: 101 was not found`);
