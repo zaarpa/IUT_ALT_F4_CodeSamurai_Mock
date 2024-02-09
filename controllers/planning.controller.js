@@ -20,7 +20,7 @@ const dijkstra = (listOfAllStations, listOfAllTrains, from, to, optimize) => {
   const graph = new Map();
 
   for (const station of listOfAllStations) {
-    graph.set(station_id.station_id, []);
+    graph.set(station.station_id, []);
   }
 
   for (const train of listOfAllTrains) {
