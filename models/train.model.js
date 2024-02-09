@@ -21,11 +21,9 @@ const trainSchema = new mongoose.Schema({
       },
       arrival_time: {
         type: String,
-        required: true,
       },
       departure_time: {
         type: String,
-        required: true,
       },
       fare: {
         type: Number,
@@ -34,6 +32,17 @@ const trainSchema = new mongoose.Schema({
     },
   ],
 });
+
+trainSchema.methods.toJSONRepresentation = function () {
+  return {
+    train_id: this.train_id,
+    train_name: this.train_name,
+    capacity: this.capacity,
+    service_start: this.stops[0].departure_time, // Assuming service starts at the first stop's arrival time
+    service_ends: this.stops[this.stops.length - 1].arrival_time, // Assuming service ends at the last stop's departure time
+    num_stations: this.stops.length,
+  };
+};
 
 const Train = mongoose.model("Train", trainSchema);
 
