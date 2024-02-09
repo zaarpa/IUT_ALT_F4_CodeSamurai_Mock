@@ -25,7 +25,6 @@ const listTrainsAtStation = async (req, res) => {
         .json({ station_id: parseInt(station_id), trains: [] });
     }
 
-    // Sort the trains based on departure time, arrival time, and train_id
     stationTrains.sort((a, b) => {
       const aDeparture = a.stops.find(
         (stop) => stop.station_id === parseInt(station_id)
@@ -40,7 +39,6 @@ const listTrainsAtStation = async (req, res) => {
         (stop) => stop.station_id === parseInt(station_id)
       )?.arrival_time;
 
-      // Custom sorting function for time values
       const compareTime = (timeA, timeB) => {
         if (timeA === null && timeB === null) return 0;
         if (timeA === null) return -1;
@@ -48,13 +46,11 @@ const listTrainsAtStation = async (req, res) => {
         return timeA.localeCompare(timeB);
       };
 
-      // Sort by departure time first, then arrival time, and finally train_id
       if (compareTime(aDeparture, bDeparture) !== 0) {
         return compareTime(aDeparture, bDeparture);
       } else if (compareTime(aArrival, bArrival) !== 0) {
         return compareTime(aArrival, bArrival);
       } else {
-        // If there's still a tie, sort based on train_ids ascending order
         return a.train_id - b.train_id;
       }
     });
