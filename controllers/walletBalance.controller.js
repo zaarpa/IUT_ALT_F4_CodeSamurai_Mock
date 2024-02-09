@@ -21,7 +21,7 @@ const getWalletBalance = async (req, res) => {
     };
     res.status(200).json(response);
   } catch (error) {
-    console.error(error);
+    console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -58,7 +58,7 @@ const addWalletBalance = async (req, res) => {
     };
     res.status(200).json(response);
   } catch (error) {
-    console.error(error);
+    console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
