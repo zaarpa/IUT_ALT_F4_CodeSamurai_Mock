@@ -13,7 +13,7 @@ const getWalletBalance = async (req, res) => {
     }
     const response = {
       wallet_id: user.user_id,
-      wallet_balance: user.balance,
+      balance: user.balance,
       wallet_user: {
         user_id: user.user_id,
         user_name: user.user_name,
@@ -50,7 +50,7 @@ const addWalletBalance = async (req, res) => {
 
     const response = {
       wallet_id: user.user_id,
-      wallet_balance: user.balance,
+      balance: user.balance,
       wallet_user: {
         user_id: user.user_id,
         user_name: user.user_name,
