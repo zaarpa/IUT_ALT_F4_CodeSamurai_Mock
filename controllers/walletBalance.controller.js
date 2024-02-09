@@ -7,10 +7,19 @@ const getWalletBalance = async (req, res) => {
     const user = await User.findOne({ user_id: wallet_id });
 
     if (!user) {
-      return res.status(404).json({ error: "User not found" });
+      return res
+        .status(404)
+        .json({ message: `Wallet with id: ${wallet_id} was not found` });
     }
-
-    res.status(200).json({ wallet_balance: user.balance });
+    const response = {
+      wallet_id: user.user_id,
+      wallet_balance: user.balance,
+      wallet_user: {
+        user_id: user.user_id,
+        user_name: user.user_name,
+      },
+    };
+    res.status(200).json(response);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
