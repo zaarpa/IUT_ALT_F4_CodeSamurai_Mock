@@ -3,9 +3,11 @@ const app = express();
 const mongoose = require("mongoose");
 
 const userRoutes = require("./routes/user.routes");
+const walletRoutes = require("./routes/walletBalance.routes");
 
 app.use(express.json());
 app.use(userRoutes);
+app.use(walletRoutes);
 
 mongoose
   .connect(process.env.ATLAS_URI)
